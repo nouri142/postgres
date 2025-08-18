@@ -16,8 +16,8 @@ services:
     ports:
       - "8080:8080" 
     depends_on:
-       mydb:
-         condition: service_healthy
+       mydb
+         
     networks:
       - net
 
@@ -26,8 +26,8 @@ services:
     ports:
       - "80:80" 
     depends_on:
-       backend:
-         condition: service_healthy
+       backend
+         
     networks:
       - net
   
