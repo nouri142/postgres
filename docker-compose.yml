@@ -1,7 +1,7 @@
 
 services:
   mydb:
-    build: ./init-db 
+    image: mydb 
     ports:
       - "5432:5432"  
     volumes:
@@ -10,7 +10,7 @@ services:
     networks:
       - net
   backend:
-    build: ./BE 
+    image: petsclinic-backend 
     environment:
      - SPRING_PROFILES_ACTIVE=postgres
     ports:
@@ -22,7 +22,7 @@ services:
       - net
 
   frontend:
-    build: ./FE 
+    image: petsclinic-frontend
     ports:
       - "80:80" 
     depends_on:
