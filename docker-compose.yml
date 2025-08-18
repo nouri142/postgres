@@ -1,0 +1,41 @@
+
+services:
+  mydb:
+    build: ./init-db 
+    ports:
+      - "5432:5432"  
+    volumes:
+      - ./init-db/init:/docker-entrypoint-initdb.d
+      -  pgdata:/var/lib/postgresql/data
+    networks:
+      - net
+  backend:
+    build: ./BE 
+    environment:
+     - SPRING_PROFILES_ACTIVE=postgres
+    ports:
+      - "8080:8080" 
+    depends_on:
+       mydb:
+         condition: service_healthy
+    networks:
+      - net
+
+  frontend:
+    build: ./FE 
+    ports:
+      - "80:80" 
+    depends_on:
+       backend:
+         condition: service_healthy
+    networks:
+      - net
+  
+networks:
+   net:
+    driver: bridge
+volumes:
+   pgdata:
+
+
+
