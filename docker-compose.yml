@@ -16,7 +16,7 @@ services:
     ports:
       - "8080:8080" 
     depends_on:
-       mydb
+      - mydb
          
     networks:
       - net
@@ -26,7 +26,7 @@ services:
     ports:
       - "80:80" 
     depends_on:
-       backend
+      - backend
          
     networks:
       - net
