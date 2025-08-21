@@ -15,4 +15,4 @@ COPY data.sql /docker-entrypoint-initdb.d/
 
 # Expose the default PostgreSQL port
 EXPOSE 5432
-CMD ["docker-entrypoint.sh", "postgres"]
+#CMD ["docker-entrypoint.sh", "postgres"]
