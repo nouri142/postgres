@@ -1,7 +1,7 @@
 FROM postgres:latest
 
 # Optional: Copy custom initialization scripts
-COPY ./init /docker-entrypoint-initdb.d/
+COPY ./init-db/init /docker-entrypoint-initdb.d/
 
 
 ENV POSTGRES_USER=petclinic
