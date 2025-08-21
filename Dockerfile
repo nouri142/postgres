@@ -2,6 +2,7 @@ FROM postgres:latest
 
 # Optional: Copy custom initialization scripts
 #COPY ./init-db/init /docker-entrypoint-initdb.d/
+RUN useradd -m -s /bin/bash petclinic
 COPY schema.sql data.sql /docker-entrypoint-initdb.d/
 COPY data.sql /docker-entrypoint-initdb.d/
 ENV POSTGRES_USER=petclinic
