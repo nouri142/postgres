@@ -1,11 +1,11 @@
 
 services:
   mydb:
-    image: mydb 
+    build: .
     ports:
       - "5432:5432"  
     volumes:
-      - ./init-db/init:/docker-entrypoint-initdb.d
+     
       -  pgdata:/var/lib/postgresql/data
     networks:
       - net
